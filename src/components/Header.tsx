@@ -1,7 +1,7 @@
 "use client";
 
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
-
+import { Sun, Moon } from "lucide-react"; // Import Lucide icons
 import { useThemeContext } from "../app/context/ThemeContext";
 import { useLanguageContext } from "@/app/context/LanguageContext";
 
@@ -13,16 +13,18 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          My Website
-        </Typography>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          {language === "en" ? "My Website" : "وبسایت من"}
+          {language === "en" ? "Math" : "ریاضی" }
         </Typography>
         <Button color="inherit" onClick={toggleLanguage}>
-          {language === "en" ? "فارسی" : "English"}
+          <img
+            src={language === "en" ? "flags/fa.png" : "flags/us.png"}
+            alt="flag"
+            width={36}
+            height={36}
+          />
         </Button>
         <IconButton color="inherit" onClick={toggleTheme}>
-          {darkMode ? "dark" : "light"}
+          {darkMode ? <Moon size={20} /> : <Sun size={20} />}
         </IconButton>
       </Toolbar>
     </AppBar>

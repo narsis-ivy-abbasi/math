@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import { Box } from "@mui/material";
+import { FileX } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Math",
@@ -18,15 +20,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: 0, padding: 0 }}>
         <ThemeProviderWrapper>
-        <LanguageProvider>
-
-          <Header />
-          {children}
+          <LanguageProvider>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "100vh",
+              }}
+            >
+              <Header />
+              <Box component="main" sx={{ flexGrow: 1 ,marginTop:10,display:"flex",justifyContent:"center"}}>
+                {children}
+              </Box>
+              <Footer />
+            </Box>
           </LanguageProvider>
         </ThemeProviderWrapper>
-        <Footer />
       </body>
     </html>
   );

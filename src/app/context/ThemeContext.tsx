@@ -13,7 +13,9 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error("useThemeContext must be used within a ThemeProviderWrapper");
+    throw new Error(
+      "useThemeContext must be used within a ThemeProviderWrapper"
+    );
   }
   return context;
 };
@@ -25,7 +27,7 @@ export const ThemeProviderWrapper = ({ children }: { children: ReactNode }) => {
     () =>
       createTheme({
         palette: {
-          mode: darkMode ? "dark" : "light",
+          mode: darkMode ? "light" : "dark",
         },
       }),
     [darkMode]
