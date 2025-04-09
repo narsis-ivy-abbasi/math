@@ -1,8 +1,8 @@
 // layout.tsx
-import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Box } from "@mui/material";
+import type { Metadata } from "next";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 import "./globals.css";

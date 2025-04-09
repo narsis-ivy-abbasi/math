@@ -1,6 +1,5 @@
 import { useLanguageContext } from '@/app/context/LanguageContext';
-import { Box, Grid, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Grid, Typography } from '@mui/material';
 
 const AboutMe = () => {
     const { language } = useLanguageContext();
@@ -18,7 +17,7 @@ const AboutMe = () => {
                 boxShadow: 3,
               }}
             >
-              <img src="/abbasi.jpg" alt="abbasi" />
+              <img src="/abbasi.jpg" alt="abbasi" loading='lazy' />
             </Box>
           </Grid>
           {/* Text Section */}

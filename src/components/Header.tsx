@@ -1,10 +1,10 @@
 "use client";
 
-import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
-import { Sun, Moon } from "lucide-react"; // Import Lucide icons
-import { useThemeContext } from "../app/context/ThemeContext";
 import { useLanguageContext } from "@/app/context/LanguageContext";
 import CalculateIcon from "@mui/icons-material/Calculate";
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { Moon, Sun } from "lucide-react"; // Import Lucide icons
+import { useThemeContext } from "../app/context/ThemeContext";
 
 const Header = () => {
   const { toggleTheme, darkMode } = useThemeContext();
@@ -23,6 +23,7 @@ const Header = () => {
             alt="flag"
             width={36}
             height={36}
+            loading="lazy"
           />
         </Button>
         <IconButton color="inherit" onClick={toggleTheme}>

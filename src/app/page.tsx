@@ -1,24 +1,20 @@
 "use client";
 import AboutMe from "@/components/AboutMe";
+import LessonCard from "@/components/LessonCard";
 import PhoneIcon from "@mui/icons-material/Phone";
 import {
   Box,
   Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   Container,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   Grid,
-  Typography,
+  Typography
 } from "@mui/material";
 import React from "react";
 import { useLanguageContext } from "./context/LanguageContext";
-import LessonCard from "@/components/LessonCard";
 
 export default function Home() {
   const { language } = useLanguageContext();

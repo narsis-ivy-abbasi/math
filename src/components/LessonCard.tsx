@@ -6,7 +6,6 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import React from "react";
 
 interface LessonProps {
   title: string;
@@ -31,6 +30,7 @@ const LessonCard = ({ title, description, image }: LessonProps) => {
             image={image}
             alt="img"
             sx={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
+            loading="lazy"
           />
         </Box>
         <Box
