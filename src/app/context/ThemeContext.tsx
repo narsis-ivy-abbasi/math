@@ -29,6 +29,9 @@ export const ThemeProviderWrapper = ({ children }: { children: ReactNode }) => {
         palette: {
           mode: darkMode ? "light" : "dark",
         },
+        typography: {
+          fontFamily: `"Vazirmatn", "Roboto", "Helvetica", "Arial", sans-serif`,
+        },
       }),
     [darkMode]
   );

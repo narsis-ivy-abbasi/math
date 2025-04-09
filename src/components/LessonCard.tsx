@@ -1,3 +1,4 @@
+import { useLanguageContext } from "@/app/context/LanguageContext";
 import {
   Box,
   Card,
@@ -13,8 +14,22 @@ interface LessonProps {
   image: string;
 }
 const LessonCard = ({ title, description, image }: LessonProps) => {
+  const { language } = useLanguageContext();
+
+  const isPersian = language === "fa";
   return (
-    <Card sx={{ maxWidth: 250 }}>
+    <Card
+      sx={{
+        width: "100%",
+        maxWidth: 350,
+        "@media (max-width:600px)": {
+          maxWidth: 350,
+        },
+        "@media (min-width:600px)": {
+          maxWidth: 250,
+        },
+      }}
+    >
       <CardActionArea>
         <Box
           sx={{
@@ -29,7 +44,7 @@ const LessonCard = ({ title, description, image }: LessonProps) => {
             component="img"
             image={image}
             alt="img"
-            sx={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
+            sx={{ objectFit: "cover", maxHeight: "100%", width: "100%" }}
             loading="lazy"
           />
         </Box>
@@ -42,14 +57,25 @@ const LessonCard = ({ title, description, image }: LessonProps) => {
             alignItems: "start",
           }}
         >
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {description}
-          </Typography>
-        </CardContent>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ textAlign: isPersian ? "right" : "left" }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                textAlign: isPersian ? "right" : "left",
+              }}
+            >
+              {description}
+            </Typography>
+          </CardContent>
         </Box>
       </CardActionArea>
     </Card>

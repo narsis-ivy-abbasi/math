@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
-  Typography
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useLanguageContext } from "./context/LanguageContext";
@@ -25,21 +25,36 @@ export default function Home() {
 
   const lessons = [
     {
-      title: "IB Diploma",
-      description:
-        "Prepare for the IB Diploma with comprehensive math courses.",
+      title: {
+        en: "IB Diploma",
+        fa: "دیپلم IB",
+      },
+      description: {
+        en: "Prepare for the IB Diploma with comprehensive math courses.",
+        fa: "برای دیپلم IB با دوره‌های جامع ریاضی آماده شوید.",
+      },
       image: "/1.jpg",
     },
     {
-      title: "From Basics to Advanced",
-      description:
-        "Progressive learning from foundational concepts to advanced math skills.",
+      title: {
+        en: "From Basics to Advanced",
+        fa: "از پایه تا پیشرفته",
+      },
+      description: {
+        en: "Progressive learning from foundational concepts to advanced math skills.",
+        fa: "یادگیری تدریجی از مفاهیم پایه تا مهارت‌های پیشرفته ریاضی.",
+      },
       image: "/2.jpg",
     },
     {
-      title: "International Schools' Mathematics",
-      description:
-        "Curriculum tailored for international schools, focusing on critical thinking and problem-solving.",
+      title: {
+        en: "International Schools' Mathematics",
+        fa: "ریاضی مدارس بین‌المللی",
+      },
+      description: {
+        en: "Curriculum tailored for international schools, focusing on critical thinking and problem-solving.",
+        fa: "برنامه درسی ویژه مدارس بین‌المللی با تمرکز بر تفکر انتقادی و حل مسئله.",
+      },
       image: "/3.jpg",
     },
   ];
@@ -79,7 +94,7 @@ export default function Home() {
               : "با ریاضی مشکل داری؟ بیا با هم حلش کنیم"}
           </Typography>
           <Button variant="contained" onClick={handleClickOpen}>
-            Call Now!
+            {language === "en" ? " Call Now!" : "!الان تماس بگیر"}
           </Button>
         </Box>
       </Box>
@@ -87,7 +102,9 @@ export default function Home() {
       {/* This is important! Keep Dialog outside of hero section */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
-          Feel free to call me for any math-related help!
+          {language === "en"
+            ? "Feel free to call me for any math-related help!"
+            : "با خیال راحت برای هرگونه کمک مربوط به ریاضی با من تماس بگیرید!"}
         </DialogTitle>
         <DialogContent
           sx={{ display: "flex", gap: 1, justifyContent: "center" }}
@@ -95,9 +112,9 @@ export default function Home() {
           <PhoneIcon color="primary" />
           <Typography color="primary">0912 134 194</Typography>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ px: 3 }}>
           <Button onClick={handleClose} color="primary">
-            Close
+            {language === "en" ? "Close" : "بستن"}
           </Button>
         </DialogActions>
       </Dialog>
@@ -106,12 +123,16 @@ export default function Home() {
       <Container maxWidth="md" sx={{ mt: 4 }}>
         <AboutMe />
 
-        <Grid container spacing={4} sx={{ mt: 10, justifyContent: "center" }}>
+        <Grid
+          container
+          spacing={4}
+          sx={{ mt: 10, justifyContent: { xs: "center", md: "space-between" } }}
+        >
           {lessons.map((lesson, index) => (
             <LessonCard
               key={index}
-              title={lesson.title}
-              description={lesson.description}
+              title={lesson.title[language]}
+              description={lesson.description[language]}
               image={lesson.image}
             />
           ))}
