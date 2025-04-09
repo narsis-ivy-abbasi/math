@@ -1,12 +1,11 @@
+// layout.tsx
 import type { Metadata } from "next";
-
-import "./globals.css";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ThemeProviderWrapper } from "./context/ThemeContext";
-import { LanguageProvider } from "./context/LanguageContext";
+import Header from "@/components/Header";
 import { Box } from "@mui/material";
-import { FileX } from "lucide-react";
+import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProviderWrapper } from "./context/ThemeContext";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Math",
@@ -31,7 +30,7 @@ export default function RootLayout({
               }}
             >
               <Header />
-              <Box component="main" sx={{ flexGrow: 1 ,marginTop:10,display:"flex",justifyContent:"center"}}>
+              <Box component="main" sx={{ flexGrow: 1 }}>
                 {children}
               </Box>
               <Footer />

@@ -4,6 +4,7 @@ import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { Sun, Moon } from "lucide-react"; // Import Lucide icons
 import { useThemeContext } from "../app/context/ThemeContext";
 import { useLanguageContext } from "@/app/context/LanguageContext";
+import CalculateIcon from "@mui/icons-material/Calculate";
 
 const Header = () => {
   const { toggleTheme, darkMode } = useThemeContext();
@@ -12,8 +13,9 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
+        <CalculateIcon sx={{marginRight:1}} />
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          {language === "en" ? "Math" : "ریاضی" }
+          {language === "en" ? "Math" : "ریاضی"}
         </Typography>
         <Button color="inherit" onClick={toggleLanguage}>
           <img
