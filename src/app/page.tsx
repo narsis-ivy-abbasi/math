@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useLanguageContext } from "./context/LanguageContext";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   const { language } = useLanguageContext();
@@ -56,6 +57,45 @@ export default function Home() {
         fa: "برنامه درسی ویژه مدارس بین‌المللی با تمرکز بر تفکر انتقادی و حل مسئله.",
       },
       image: "/3.jpg",
+    },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: {
+        en: "Sarah A.",
+        fa: "سارا.ا",
+      },
+      text: {
+        en: "Mr. Abbasi is the best math teacher I've ever had! His clear explanations helped me finally understand algebra.",
+        fa: "آقای عباسی بهترین معلم ریاضی‌ای هستن که تا حالا داشتم! توضیحات واضحشون باعث شد بالاخره جبر رو بفهمم.",
+      },
+      image: "/user1.jpg",
+    },
+    {
+      id: 2,
+      name: {
+        en: "Narsis A.",
+        fa: "نرگس.ا",
+      },
+      text: {
+        en: "Thanks to these lessons, I scored top marks in my entrance exam. Truly thankful for the support and guidance!",
+        fa: "به لطف این کلاس‌ها، تونستم در آزمون ورودی نمره‌ی عالی بگیرم. واقعاً بابت حمایت و راهنمایی‌هاشون ممنونم!",
+      },
+      image: "/user2.jpg",
+    },
+    {
+      id: 3,
+      name: {
+        en: "Mrs. Farah (Parent)",
+        fa: "فرح.ا (ولی دانش‌آموز)",
+      },
+      text: {
+        en: "My daughter used to struggle with math, but now she looks forward to lessons. Highly recommend!",
+        fa: "دخترم قبلاً توی ریاضی مشکل داشت، ولی حالا با اشتیاق منتظر کلاس‌هاست. واقعاً توصیه می‌کنم!",
+      },
+      image: "/user3.jpg",
     },
   ];
 
@@ -122,11 +162,13 @@ export default function Home() {
       {/* Other Content */}
       <Container maxWidth="md" sx={{ mt: 4 }}>
         <AboutMe />
-
+        <Typography variant="h4" align="center" gutterBottom mt={10}>
+          {language === "en" ? "Subjects Covered" : "دروس ارائه‌شده"}
+        </Typography>
         <Grid
           container
           spacing={4}
-          sx={{ mt: 10, justifyContent: { xs: "center", md: "space-between" } }}
+          sx={{ justifyContent: { xs: "center", md: "space-between" } }}
         >
           {lessons.map((lesson, index) => (
             <LessonCard
@@ -137,6 +179,23 @@ export default function Home() {
             />
           ))}
         </Grid>
+        <Box>
+          <Typography variant="h4" align="center" gutterBottom mt={10}>
+          {language === "en" ? " What Students & Parents Say" : "نظر دانش آموزان و والدین"}
+         
+          </Typography>
+          <Grid container spacing={3} justifyContent="center" mb={10}>
+            {testimonials.map((testimonial) => (
+              <Testimonials
+                key={testimonial.id}
+                id={testimonial.id}
+                name={testimonial.name[language]}
+                text={testimonial.text[language]}
+                image={testimonial.image}
+              />
+            ))}
+          </Grid>
+        </Box>
       </Container>
     </>
   );
